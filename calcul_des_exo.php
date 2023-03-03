@@ -18,7 +18,7 @@ $reste=$somme-$sum;
     <div class="panel panel-primary margetop"><?// success et primary= blue relie deux class ensemble panel qui est sur bootstrap et margetop ?>
 <div class="panel-heading">veuillez  saisir les donnees </div>
 <div class="panel-body">
-    <form method="POST" action="test.php" class="form">
+    <form method="POST" action="calcul_des_exo.php" class="form">
         <div class="form-group">
             <label for="nom">montant</label>
         <input type="int" name="somme" placeholder="votre minerval" required class="form-control">
