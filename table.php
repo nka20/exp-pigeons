@@ -16,7 +16,7 @@ $date= date('d-m-y h:i:s');
 
 $req="insert into taux(nom,trimestre,taux,exo,reste,date)values ('$nom','$trim','$exo','$sum','$reste','$date')";//excepter pour les int les autres types commme varchard ont les guillemets simple
 $resultat=$pdo->query($req) or die(mysql_error());
-header("location:allan.php");
+header("location:tableau.php");
 
 ?>
 

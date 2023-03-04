@@ -3,6 +3,8 @@ require "com.php";
 $ins="select * from taux order by id ASC";
 $res=$pdo->query($ins) or die(mysql_error());
 
+$in="select * from taux order by id ASC";
+$rest=$pdo->query($in) or die(mysql_error());
 
 $int="select sum(reste) from taux";
 $ret=$pdo->query($int) or die(mysql_error());
@@ -31,6 +33,7 @@ $ret=$pdo->query($int) or die(mysql_error());
 </thead>
 <tbody>
 <?php while($al=$res->fetch()) {?>
+
 <tr>
 <td><?php echo $al["id"] ?></td>
 <td><?php echo $al["nom"] ?></td>
@@ -47,16 +50,54 @@ $ret=$pdo->query($int) or die(mysql_error());
 </td>
 </tr>
 
-
-</tbody>
 <?php } ?>
+</tbody>
+
 </table>
 <?php foreach($pdo->query($int) as $ak) {?>
 <p>il vous reste payer <?php echo $ak['sum(reste)']; ?> </p>
 <?php }?>
 
 <a href="sup.php">supprimer tout</a><br>
-<a href="test2.php">ajouter nouveau</a><br>
+<a href="formulaire_de_paiement.php">ajouter nouveau</a><br>
 <button onclick="window.print()">print</button>
+
+
+<?php 
+while($aq=$rest->fetch()){
+
+$allan=$aq['nom'];
+
+$al="select * from 1er where nom = '$allan'";
+$all=$pdo->query($al) or die(mysql_error());
+
+$aj="select * from 2eme where nom = '$allan'";
+$alj=$pdo->query($aj) or die(mysql_error());
+
+$av="select * from 3eme where nom = '$allan'";
+$alv=$pdo->query($av) or die(mysql_error());?>
+
+<table border=1px solid>
+    <thead>
+        <tr>
+        <td>1er</td>
+        <td>2er</td>
+        <td>3er</td>
+</tr>
+    </thead>
+    <tbody>
+    <tr>
+
+       <td><?php while($ak=$all->fetch()){ if($ak['nom']){?>
+       ok <?php }else{ echo"non";} }?> </td>
+       <td><?php while($ajj=$alj->fetch()){ if($ajj['nom']){?>
+        ok <?php }else{ echo"non";}}?></td>
+        <td><?php while($avv=$alv->fetch()){ if($avv['nom']){?>
+       ok <?php } else{ echo"non";}}?> </td>
+</tr>
+<?php }?>
+    </tbody>
+</table>
+
 </body>
 </html>
