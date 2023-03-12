@@ -10,7 +10,7 @@ $section=isset($_POST['section']) ? $_POST['section'] :"";
     <title>Document</title>
 </head>
 <body>
-    <form action="exp.php" method="POST">
+    <form action="select.php" method="POST">
 
     <select name="section" onchange="this.form.submit()">
         <option>tous les niveaux</option>
@@ -36,3 +36,4 @@ $section=isset($_POST['section']) ? $_POST['section'] :"";
         </form>
 </body>
 </html>
+

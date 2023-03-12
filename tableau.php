@@ -8,6 +8,9 @@ $rest=$pdo->query($in) or die(mysql_error());
 
 $int="select sum(reste) from taux";
 $ret=$pdo->query($int) or die(mysql_error());
+
+$requete="select count(*) countt from taux" ;
+$alc=$pdo->query($requete) or die(mysql_error());
 ?>
 
 <!DOCTYPE html>
@@ -32,10 +35,18 @@ $ret=$pdo->query($int) or die(mysql_error());
 
 </thead>
 <tbody>
-<?php while($al=$res->fetch()) {?>
+<?php   
+ while($al=$res->fetch()) {
+    while($alcc=$alc->fetch()){
+        for ($i=1; $i <= $alcc['countt']; $i++) {
+    ?>
 
 <tr>
-<td><?php echo $al["id"] ?></td>
+
+<td><?php  
+         echo $i;?>
+         </td>
+        
 <td><?php echo $al["nom"] ?></td>
 <td><?php echo $al["trimestre"] ?></td>
 <td><?php echo $al["taux"] ?></td>
@@ -50,7 +61,7 @@ $ret=$pdo->query($int) or die(mysql_error());
 </td>
 </tr>
 
-<?php } ?>
+<?php }}} ?>
 </tbody>
 
 </table>
