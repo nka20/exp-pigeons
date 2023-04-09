@@ -25,7 +25,7 @@ $alc=$pdo->query($requete) or die(mysql_error());
 <table border=1px solid>
     <thead>
 <tr>
-<th>id</th>
+<th>place</th>
 <th>nom</th>
 <th>trimestre</th>
 <th>taux</th>
@@ -35,18 +35,15 @@ $alc=$pdo->query($requete) or die(mysql_error());
 
 </thead>
 <tbody>
-<?php   
- while($al=$res->fetch()) {
-    while($alcc=$alc->fetch()){
-        for ($i=1; $i <= $alcc['countt']; $i++) {
-    ?>
+<?php  
+$no=1; 
+  while($al=$res->fetch()) { 
+    
+          ?>
 
 <tr>
 
-<td><?php  
-         echo $i;?>
-         </td>
-        
+<td><?php echo $no; ?> </td> 
 <td><?php echo $al["nom"] ?></td>
 <td><?php echo $al["trimestre"] ?></td>
 <td><?php echo $al["taux"] ?></td>
@@ -61,7 +58,7 @@ $alc=$pdo->query($requete) or die(mysql_error());
 </td>
 </tr>
 
-<?php }}} ?>
+<?php $no++; } ?>
 </tbody>
 
 </table>
