@@ -7,5 +7,4 @@ try{
     die('erreur de connexion:'.$e->getmessage());//erreur---  ni nk page $e->--- progrmmer message de erreur
 }
 
- 
 ?>
